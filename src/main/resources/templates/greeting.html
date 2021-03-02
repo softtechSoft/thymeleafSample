@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Form</h1>
+	<!-- 画面表示するには http://localhost:8080/greeting-->
+	<!-- th:始まるのは、thymeleafのタグです。 -->
+	<!-- thymeleafタグ参照（一つ例です。ほかのもいろいろ）：https://qiita.com/yakumo3390/items/6b3fcc9e00f7a682660c -->
+    <form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+    	<p>Id: <input type="text" th:field="*{id}" /></p>
+        <p>Message: <input type="text" th:field="*{content}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <!-- TODO1：CheckBox -->
+        <!-- TODO2：Radio -->
+        <!-- TODO3：Lable -->
+    </form>
+</body>
+</html>
