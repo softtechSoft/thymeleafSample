@@ -1,9 +1,11 @@
 package com.softtech.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.softtech.actionForm.Greeting;
@@ -39,12 +41,21 @@ public class GreetingController {
       /*
  	  * 概要：画面FormをPost時の処理
  	  *
+ 	  * @param greeting Postされた画面データ。Ｖａｌｉｄａｔｉｏｎチェックする場所
+ 	  * @param bindingResult Validationチェックエラー時エラーメッセージなど置く場所。
+ 	  * @param model 他画面へ引き渡すデータ
  	  *
  	  * 作成者：教育@ソフトテク
  	  * 作成日：2021/３/２
+ 	  * //public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
  	  */
 	  @PostMapping("/greeting")
-	  public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
+	  public String greetingSubmit(@Valid Greeting greeting, BindingResult bindingResult,Model model) {
+
+		  if (bindingResult.hasErrors()) {
+				return "greeting";
+		  }
+
 		  //画面入力値を取得
 		  String ct = greeting.getContent();
 		  // データ変更
@@ -56,6 +67,7 @@ public class GreetingController {
 		  greeting.setContent(ct);
 
 		  model.addAttribute("greeting", greeting);
+
 		  return "result";
 	  }
 }
