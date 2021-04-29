@@ -13,7 +13,7 @@ import com.softtech.actionForm.Greeting;
 /**
  * 概要：Thymeleaf-form を利用する場合、ビューとコントロールとデータのデータやり取りサンプルです。
  *       参照：https://spring.pleiades.io/guides/gs/handling-form-submission/
- *
+ *0.0
  * 作成者：教育@ソフトテク
  * 作成日：2021/３/２
  */
